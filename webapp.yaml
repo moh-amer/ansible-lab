@@ -1,0 +1,5 @@
+---
+- name: webserver play
+  hosts : all
+  roles:
+          - webserver

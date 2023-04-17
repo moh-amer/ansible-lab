@@ -1,0 +1,14 @@
+---
+- name: updating the system
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: installing nginx
+  package:
+    name: "{{  web_server  }}"
+    state: present
+  notify:
+    - copy_image
+    - generate_template
+    - service_restart

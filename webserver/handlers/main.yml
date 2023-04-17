@@ -1,0 +1,16 @@
+---
+- name: copy_image
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html
+  loop: "{{ files }}"
+
+- name: generate_template
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
+- name: service_restart
+  service:
+    name: "{{ web_server }}"
+    state: restarted
